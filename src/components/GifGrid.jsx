@@ -1,19 +1,17 @@
-
+import { getGifs } from "../helpers/getGifs";
+import {useState  } from "react";
 
 export const GifGrid = ({category}) => {
-    
-    const getGifs = async () => {
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=2d94E1ZPaCGzfhRrQmVsP6qmN1fNlHBT&q=${category}&limit=20`;
-        const resp = await fetch(url);
-        console.log(resp);
-    }
 
-    getGifs();
-    
+  const [counter, setcounter] = useState(10);
+  getGifs(category);
   return (
     <>
       <h3>{category}</h3>
+      <h5>{counter}</h5>
     </>
   )
 }
+
+  
 
