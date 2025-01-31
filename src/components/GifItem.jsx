@@ -1,8 +1,11 @@
 
-export const GifItem = () => {
+export const GifItem = ( title, url, id ) => {
+    console.log("id", id);
+    console.log("url", url);
+    console.log("title", title);
   return (
-    <div>
-      
+    <div className="card">
+      <img src={url} alt={title}/>
     </div>
   )
 }
