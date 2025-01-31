@@ -1,17 +1,28 @@
 import { getGifs } from "../helpers/getGifs";
-import {useState  } from "react";
+import { useState, useEffect } from "react";
+import { GitItem } from "./GifItem";
 
-export const GifGrid = ({category}) => {
+export const GifGrid = ({ category }) => {
+  const [images, setImages] = useState([]);
 
-  const [counter, setcounter] = useState(10);
-  getGifs(category);
+  const getImages = async() => {
+    const newImages = await getGifs( category);
+    setImages(newImages);
+  }
+  useEffect( () => {
+    getImages();
+  }, [ ])
+
   return (
     <>
       <h3>{category}</h3>
-      <h5>{counter}</h5>
+      <ol>
+        {
+          images.map( ({id, title}) => (
+            <GitItem />
+          ))
+        }
+      </ol>
     </>
-  )
-}
-
-  
-
+  );
+};
